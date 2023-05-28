@@ -74,5 +74,8 @@ wynik = obiekt.oblicz(wartosc)# wynik: 166 655
 compareWithComputer(obiekt, 55)
 compareWithYourResult(obiekt, 55, 111)
 
+for x in range(-5999,5999):
+    compareWithComputer(obiekt,x)
+
 
 
