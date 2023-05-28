@@ -43,35 +43,12 @@ class Function(object):
     
     def oblicz(self,wartosc):
         self._wynik = eval(self.zamiana(wartosc))
+        print(f"Wynikiem funkcji ({self}) dla x = {wartosc} jest : {self._wynik}")
         return self._wynik
 
-wartosc = 2
-obiekt = Function(1,2,3)# 1x do 0 + 2x do 1 + 3x do 2
-wynik = obiekt.oblicz(wartosc)
-print(f"Wynikiem funkcji ({obiekt}) dla x = {wartosc} jest : {wynik}")
+wartosc = 55
+obiekt = Function(5,5,55)# 5x**0 + 5x**1 + 55x**2
+wynik = obiekt.oblicz(wartosc)# wynik: 166 655
 
 
 
-
-# def test(function):
-#     #setting variables
-#     result = 0
-#     args = function.args
-#     print(function)
-#     #calculating correct result
-#     for x in range (0,len(args)):
-#         result += args[x]**x
-
-#     #checking if result is equals to function.sum
-#     try:
-#         assert function.sum == float(result)
-#         print(colorama.Fore.GREEN + f"({function}) passed !")
-#     except: 
-#         print(colorama.Fore.RED + f"({function}) didnt pass the test,  Result from ({function}): {function.sum}; result from test : {result}")
-#     print(colorama.Fore.WHITE,end="")
-
-# test(Function(1,2,3))
-# test(Function(5,-2))
-
-# obiekt = Function(0,-25,-2,2,2,2,1)
-# test(obiekt)
