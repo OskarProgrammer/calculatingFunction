@@ -68,14 +68,14 @@ def compareWithYourResult(function, wartosc,result):
 
 
 wartosc = 55
-obiekt = Function(5,5,55)# 5x**0 + 5x**1 + 55x**2
-wynik = obiekt.oblicz(wartosc)# wynik: 166 655
+obiekt = Function(5,0,55)# 5x**0 + 0x**1 + 55x**2
+wynik = obiekt.oblicz(wartosc)# wynik: 166 380
 
 compareWithComputer(obiekt, 55)
-compareWithYourResult(obiekt, 55, 111)
+compareWithYourResult(obiekt, 55, 166_380)
 
-for x in range(-5999,5999):
-    compareWithComputer(obiekt,x)
+# for x in range(-5999,5999):
+#     compareWithComputer(obiekt,x)
 
 
 
