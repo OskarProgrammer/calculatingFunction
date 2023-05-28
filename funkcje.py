@@ -38,17 +38,31 @@ class Function(object):
     def zamiana(self,wartosc):
         funkcja = str(self)
         funkcja = funkcja.replace('x',str(wartosc)) 
-        funkcja = funkcja.replace("**",str("**"))
         return funkcja
     
     def oblicz(self,wartosc):
         self._wynik = eval(self.zamiana(wartosc))
-        print(f"Wynikiem funkcji ({self}) dla x = {wartosc} jest : {self._wynik}")
         return self._wynik
+
+def test(function, wartosc):
+    funkcja = str(function)
+    funkcja = funkcja.replace('x',str(wartosc)) 
+    result = eval(funkcja)
+
+    try:
+        assert result == function.oblicz(wartosc)
+        print(colorama.Fore.GREEN+ f"({function}) passsed the test with x == {wartosc} and result is {result}")
+    except:
+        print(colorama.Fore.RED + f"({function}) didnt pass the test with x =={wartosc} \n Result from ({function}) built in method : {function.oblicz(wartosc)}\n Correct result : {result}")
+    print(colorama.Fore.WHITE, end="")
+
+
 
 wartosc = 55
 obiekt = Function(5,5,55)# 5x**0 + 5x**1 + 55x**2
 wynik = obiekt.oblicz(wartosc)# wynik: 166 655
+
+test(obiekt,55)
 
 
 
