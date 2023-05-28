@@ -1,5 +1,7 @@
 import colorama
 import subprocess
+import matplotlib.pyplot as plt
+import numpy
 
 subprocess.run("clear")
 
@@ -35,19 +37,20 @@ class Function(object):
     
     def zamiana(self,wartosc):
         funkcja = str(self)
-        for _ in range(0,len(funkcja)):
-            funkcja = funkcja.replace('x',str(wartosc)) 
-        print(funkcja)
+        funkcja = funkcja.replace('x',str(wartosc)) 
+        funkcja = funkcja.replace("**",str("**"))
         return funkcja
     
     def oblicz(self,wartosc):
         self._wynik = eval(self.zamiana(wartosc))
         return self._wynik
 
+wartosc = 2
 obiekt = Function(1,2,3)# 1x do 0 + 2x do 1 + 3x do 2
-print(obiekt)
-wynik = obiekt.oblicz(2)
-print(wynik)
+wynik = obiekt.oblicz(wartosc)
+print(f"Wynikiem funkcji ({obiekt}) dla x = {wartosc} jest : {wynik}")
+
+
 
 
 # def test(function):
