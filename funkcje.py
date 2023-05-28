@@ -42,7 +42,7 @@ class Function(object):
         self._wynik = eval(self.zamiana(wartosc))
         return self._wynik
 
-def test(function, wartosc):
+def compareWithComputer(function, wartosc):
     funkcja = str(function)
     funkcja = funkcja.replace('x',str(wartosc)) 
     result = eval(funkcja)
@@ -55,12 +55,24 @@ def test(function, wartosc):
     print(colorama.Fore.WHITE, end="")
 
 
+def compareWithYourResult(function, wartosc,result):
+
+    try:
+        assert result == function.oblicz(wartosc)
+        print(colorama.Fore.GREEN+ f"({function}) passsed the test with x == {wartosc} and result is {result}")
+    except:
+        print(colorama.Fore.RED + f"Your result for ({function}) with x == {wartosc} isn't correct.\n Your result : {result}\n Correct result : {function.oblicz(wartosc)}")
+    print(colorama.Fore.WHITE, end="")
+
+
+
 
 wartosc = 55
 obiekt = Function(5,5,55)# 5x**0 + 5x**1 + 55x**2
 wynik = obiekt.oblicz(wartosc)# wynik: 166 655
 
-test(obiekt,55)
+compareWithComputer(obiekt, 55)
+compareWithYourResult(obiekt, 55, 111)
 
 
 
