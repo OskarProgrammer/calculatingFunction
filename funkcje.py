@@ -33,7 +33,7 @@ class Function(object):
         
         return string
 
-def test(function,function_name):
+def test(function):
     #setting variables
     result = 0
     args = function.args
@@ -45,15 +45,16 @@ def test(function,function_name):
     #checking if result is equals to function.sum
     try:
         assert function.sum == float(result)
-        print(colorama.Fore.GREEN + f"{function_name} passed !")
+        print(colorama.Fore.GREEN + f"({function}) passed !")
     except: 
-        print(colorama.Fore.RED + f"{function_name} didnt pass the test,  Result from {function_name}: {function.sum}; result from test : {result}")
+        print(colorama.Fore.RED + f"({function}) didnt pass the test,  Result from ({function}): {function.sum}; result from test : {result}")
     print(colorama.Fore.WHITE,end="")
 
-test(Function(1,2,3),"funkcja")
-test(Function(5,-2), "funkcja 2")
+test(Function(1,2,3))
+test(Function(5,-2))
 
-obiekt = Function(0 ,-25,-2,2,2,2,1)
-test(obiekt,"funkcja 3")
+obiekt = Function(0,-25,-2,2,2,2,1)
+test(obiekt)
 
 print(obiekt)
+
