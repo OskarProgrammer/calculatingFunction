@@ -1,7 +1,5 @@
 import colorama
 import subprocess
-import matplotlib.pyplot as plt
-import numpy
 
 subprocess.run("clear")
 
