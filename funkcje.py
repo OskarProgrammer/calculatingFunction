@@ -44,7 +44,7 @@ class Function(object):
         self._wynik = eval(self.zamiana(wartosc))
         return self._wynik
 
-obiekt = Function(1,2,3)
+obiekt = Function(1,2,3)# 1x do 0 + 2x do 1 + 3x do 2
 print(obiekt)
 wynik = obiekt.oblicz(2)
 print(wynik)
