@@ -42,6 +42,12 @@ class Function(object):
         return self._wynik
 
     def __sub__(self,other):
+        print ("INFORMATIONS:")
+        print(colorama.Fore.WHITE + str(self) + f" --> {self.args}")
+        print(str(other) + f" --> {other.args}")
+
+        print(colorama.Fore.CYAN + f"\n({str(self)})-({str(other)}) ==>",end="")
+
         maximum = max(len(other.args),len(self.args))
 
         self.result = []
@@ -55,7 +61,7 @@ class Function(object):
                 except:
                     self.result.append(other.args[x])
 
-        return self.result
+        return switch(self.result),self.result
 
 
 def compareWithComputer(function, wartosc):
@@ -116,13 +122,13 @@ def switch(args):
 
 obiekt1 = Function(2,0,-3,5) # 5x**3 - 3x**2 + 2
 obiekt2 = Function(2,2,2)   # 2x**2 + 2x + 2
+wynik, wynikArgs = obiekt1-obiekt2
 
-print(str(obiekt1) + f" --> {obiekt1.args}")
-print(str(obiekt2) + f" --> {obiekt2.args}")
+print(" " + str(wynik) + colorama.Fore.GREEN + f"\ntuple wynikArgs: {tuple(wynikArgs)} <-- parameters that you have to put in the Function(wynikArgs:tuple) to initialize this function." + colorama.Fore.RED + "\nWARNING: YOU HAVE TO PUT IT MANUALLY")
+print(colorama.Fore.WHITE,end="")
 
-wynik, wynikArgs = switch(obiekt1-obiekt2), obiekt1-obiekt2
-
-print("\n" + str(wynik) + f" --> {tuple(wynikArgs)}")
+obiekt3 = Function(0,-2,-5,5)
+print(f"test: {obiekt3}, input parameters: {tuple(wynikArgs)}")
 
 
 
