@@ -59,7 +59,7 @@ class Function(object):
                 try: 
                     self.result.append(self.args[x])
                 except:
-                    self.result.append(other.args[x])
+                    self.result.append(-(other.args[x]))
 
         return switch(self.result),self.result
     
@@ -135,7 +135,7 @@ def odejmowanie(pierwszy,drugi):
     print(" " + str(wynik) + colorama.Fore.GREEN + f"\ntuple wynikArgs: {tuple(wynikArgs)} <-- parameters that you have to put in the Function(wynikArgs:tuple) to initialize this function." + colorama.Fore.RED + "\nWARNING: YOU HAVE TO PUT IT MANUALLY")
     print(colorama.Fore.WHITE,end="")
 
-    obiekt3 = Function(0,-2,-5,5)
+    obiekt3 = Function(0,-2,-5,-5)
     print(f"test: {obiekt3}, input parameters: {tuple(wynikArgs)}")
 
     print("\n\n\n")
@@ -164,7 +164,7 @@ def dodawanie(pierwszy,drugi):
 obiekt1 = Function(2,0,-3,5) # 5x**3 - 3x**2 + 2
 obiekt2 = Function(2,2,2)   # 2x**2 + 2x + 2
 
-odejmowanie(obiekt1,obiekt2)
+odejmowanie(obiekt2,obiekt1)
 
 dodawanie(obiekt1,obiekt2)
 
