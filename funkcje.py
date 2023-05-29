@@ -62,6 +62,28 @@ class Function(object):
                     self.result.append(other.args[x])
 
         return switch(self.result),self.result
+    
+    def __add__(self,other):
+        print ("INFORMATIONS:")
+        print(colorama.Fore.WHITE + str(self) + f" --> {self.args}")
+        print(str(other) + f" --> {other.args}")
+
+        print(colorama.Fore.CYAN + f"\n({str(self)})+({str(other)}) ==>",end="")
+
+        maximum = max(len(other.args),len(self.args))
+
+        self.result = []
+
+        for x in range(0,maximum):
+            try: 
+                self.result.append(self.args[x]+other.args[x])
+            except:
+                try: 
+                    self.result.append(self.args[x])
+                except:
+                    self.result.append(other.args[x])
+
+        return switch(self.result),self.result
 
 
 def compareWithComputer(function, wartosc):
@@ -108,6 +130,25 @@ def switch(args):
         
     return string
 
+def odejmowanie(pierwszy,drugi):
+    wynik, wynikArgs = pierwszy-drugi
+    print(" " + str(wynik) + colorama.Fore.GREEN + f"\ntuple wynikArgs: {tuple(wynikArgs)} <-- parameters that you have to put in the Function(wynikArgs:tuple) to initialize this function." + colorama.Fore.RED + "\nWARNING: YOU HAVE TO PUT IT MANUALLY")
+    print(colorama.Fore.WHITE,end="")
+
+    obiekt3 = Function(0,-2,-5,5)
+    print(f"test: {obiekt3}, input parameters: {tuple(wynikArgs)}")
+
+    print("\n\n\n")
+
+def dodawanie(pierwszy,drugi):
+    wynik, wynikArgs = pierwszy+drugi
+
+    print(" " + str(wynik) + colorama.Fore.GREEN + f"\ntuple wynikArgs: {tuple(wynikArgs)} <-- parameters that you have to put in the Function(wynikArgs:tuple) to initialize this function." + colorama.Fore.RED + "\nWARNING: YOU HAVE TO PUT IT MANUALLY")
+    print(colorama.Fore.WHITE,end="")
+
+    obiekt3 = Function(4,2,-1,5)
+    print(f"test: {obiekt3}, input parameters: {tuple(wynikArgs)}")
+    print("\n\n\n")
 
 # wartosc = 55
 # obiekt = Function(5,0,55)# 5x**0 + 0x**1 + 55x**2
@@ -122,13 +163,9 @@ def switch(args):
 
 obiekt1 = Function(2,0,-3,5) # 5x**3 - 3x**2 + 2
 obiekt2 = Function(2,2,2)   # 2x**2 + 2x + 2
-wynik, wynikArgs = obiekt1-obiekt2
 
-print(" " + str(wynik) + colorama.Fore.GREEN + f"\ntuple wynikArgs: {tuple(wynikArgs)} <-- parameters that you have to put in the Function(wynikArgs:tuple) to initialize this function." + colorama.Fore.RED + "\nWARNING: YOU HAVE TO PUT IT MANUALLY")
-print(colorama.Fore.WHITE,end="")
+odejmowanie(obiekt1,obiekt2)
 
-obiekt3 = Function(0,-2,-5,5)
-print(f"test: {obiekt3}, input parameters: {tuple(wynikArgs)}")
-
+dodawanie(obiekt1,obiekt2)
 
 
