@@ -5,7 +5,6 @@ subprocess.run("clear")
 
 class Function(object):
     def __init__(self,*args):
-
         self.sum = 0
         self.args = args
         for x in range(0,len(args)):
@@ -19,7 +18,7 @@ class Function(object):
                 if self.args[x]>=0:
                     lista.append("+" + str(self.args[x])+"")
                     continue
-                lista.append("-" + str(self.args[x])+ "")
+                lista.append("" + str(self.args[x])+ "")
             elif self.args[x]>0:
                 if x == len(self.args)-1:
                     lista.append(str(self.args[x])+"*x**"+ str(x)+"")
@@ -41,6 +40,23 @@ class Function(object):
     def oblicz(self,wartosc):
         self._wynik = eval(self.zamiana(wartosc))
         return self._wynik
+
+    def __sub__(self,other):
+        maximum = max(len(other.args),len(self.args))
+
+        self.result = []
+
+        for x in range(0,maximum):
+            try: 
+                self.result.append(self.args[x]-other.args[x])
+            except:
+                try: 
+                    self.result.append(self.args[x])
+                except:
+                    self.result.append(other.args[x])
+
+        return self.result
+
 
 def compareWithComputer(function, wartosc):
     funkcja = str(function)
@@ -64,18 +80,49 @@ def compareWithYourResult(function, wartosc,result):
         print(colorama.Fore.RED + f"Your result for ({function}) with x == {wartosc} isn't correct.\n Your result : {result}\n Correct result : {function.oblicz(wartosc)}")
     print(colorama.Fore.WHITE, end="")
 
+def switch(args):
+    lista = []
+
+    for x in range(0,len(args)):
+            if x == 0 :
+                if args[x]>=0:
+                    lista.append("+" + str(args[x])+"")
+                    continue
+                lista.append("" + str(args[x])+ "")
+            elif args[x]>0:
+                if x == len(args)-1:
+                    lista.append(str(args[x])+"*x**"+ str(x)+"")
+                    continue
+                lista.append("+" + str(args[x])+"*x**"+ str(x)+ "")
+            elif args[x]<0:
+                lista.append("-" + str(args[x])[1::]+"*x**"+ str(x)+ "")
+
+    lista.reverse()
+    string = "".join(lista)
+        
+    return string
 
 
+# wartosc = 55
+# obiekt = Function(5,0,55)# 5x**0 + 0x**1 + 55x**2
+# wynik = obiekt.oblicz(wartosc)# wynik: 166 380
 
-wartosc = 55
-obiekt = Function(5,0,55)# 5x**0 + 0x**1 + 55x**2
-wynik = obiekt.oblicz(wartosc)# wynik: 166 380
-
-compareWithComputer(obiekt, 55)
-compareWithYourResult(obiekt, 55, 166_380)
+# compareWithComputer(obiekt, 55)
+# compareWithYourResult(obiekt, 55, 166_380)
 
 # for x in range(-5999,5999):
 #     compareWithComputer(obiekt,x)
+
+
+obiekt1 = Function(2,0,-3,5) # 5x**3 - 3x**2 + 2
+obiekt2 = Function(2,2,2)   # 2x**2 + 2x + 2
+
+print(str(obiekt1) + f" --> {obiekt1.args}")
+print(str(obiekt2) + f" --> {obiekt2.args}")
+
+wynik, wynikArgs = switch(obiekt1-obiekt2), obiekt1-obiekt2
+
+print("\n" + str(wynik) + f" --> {tuple(wynikArgs)}")
 
 
 
